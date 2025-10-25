@@ -11,7 +11,8 @@ enum RawShapeType {
   // none(0), unused in CPU code
   squircle(1),
   ellipse(2),
-  roundedRectangle(3);
+  roundedRectangle(3),
+  smoothCorner(4);
 
   const RawShapeType(this.shaderIndex);
 
@@ -25,6 +26,8 @@ enum RawShapeType {
         return RawShapeType.ellipse;
       case LiquidRoundedRectangle():
         return RawShapeType.roundedRectangle;
+      case LiquidSmoothRectangleBorder():
+        return RawShapeType.smoothCorner;
     }
   }
 }
@@ -52,6 +55,8 @@ class ShapeInLayerInfo extends Equatable {
         _assertSameRadius(shape.borderRadius);
         return shape.borderRadius.x;
       case LiquidOval():
+        return 0;
+      case LiquidSmoothRectangleBorder():
         return 0;
     }
   }

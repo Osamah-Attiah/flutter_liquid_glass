@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 /// Represents a shape that can be used by a [LiquidGlass] widget.
 sealed class LiquidShape extends OutlinedBorder with EquatableMixin {
@@ -146,4 +147,52 @@ class LiquidRoundedRectangle extends LiquidShape {
 
   @override
   List<Object?> get props => [...super.props, borderRadius];
+}
+
+
+class LiquidSmoothRectangleBorder extends LiquidShape {
+  /// Creates a new [LiquidRoundedRectangle] with the given [borderRadius].
+  const LiquidSmoothRectangleBorder({
+    required this.borderRadius,
+    this.smoothness = 0.0,
+    super.side = BorderSide.none,
+  });
+
+  /// The radius of the rounded rectangle.
+  ///
+  /// This is the radius of the corners of the rounded rectangle.
+  final BorderRadiusGeometry borderRadius;
+
+  final double smoothness;
+
+  @override
+  OutlinedBorder get _equivalentOutlinedBorder => SmoothRectangleBorder(
+    borderRadius: borderRadius,
+    side: side,
+    smoothness: smoothness,
+  );
+
+  @override
+  LiquidSmoothRectangleBorder copyWith({
+    BorderSide? side,
+    BorderRadiusGeometry? borderRadius,
+  }) {
+    return LiquidSmoothRectangleBorder(
+      side: side ?? this.side,
+      borderRadius: borderRadius ?? this.borderRadius,
+      smoothness: smoothness ?? this.smoothness,
+    );
+  }
+
+  @override
+  ShapeBorder scale(double t) {
+    return LiquidSmoothRectangleBorder(
+      borderRadius: borderRadius * t,
+      side: side.scale(t),
+      smoothness: smoothness,
+    );
+  }
+
+  @override
+  List<Object?> get props => [...super.props, borderRadius, smoothness];
 }
