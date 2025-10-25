@@ -57,7 +57,7 @@ class ShapeInLayerInfo extends Equatable {
       case LiquidOval():
         return 0;
       case LiquidSmoothRectangleBorder():
-        return 0;
+        return shape.radius;
     }
   }
 

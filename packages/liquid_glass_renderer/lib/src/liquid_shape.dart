@@ -155,6 +155,7 @@ class LiquidSmoothRectangleBorder extends LiquidShape {
   const LiquidSmoothRectangleBorder({
     required this.borderRadius,
     this.smoothness = 0.0,
+    this.radius = 0.0,
     super.side = BorderSide.none,
   });
 
@@ -164,6 +165,8 @@ class LiquidSmoothRectangleBorder extends LiquidShape {
   final BorderRadiusGeometry borderRadius;
 
   final double smoothness;
+
+  final double radius;
 
   @override
   OutlinedBorder get _equivalentOutlinedBorder => SmoothRectangleBorder(
