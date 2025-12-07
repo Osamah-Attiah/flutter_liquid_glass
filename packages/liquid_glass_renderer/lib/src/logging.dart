@@ -7,12 +7,11 @@ export 'package:logging/logging.dart' show Level, Logger;
 
 @internal
 abstract class LgrLogNames {
-  static const object = 'lgr.object';
-  static const layer = 'lgr.layer';
-  static const link = 'lgr.link';
-  static const glass = 'lgr.glass';
-
   static const _root = 'lgr';
+
+  static const render = '$_root.render';
+  static const layer = '$_root.render.layer';
+  static const geometry = '$_root.geometry';
 }
 
 /// Logging utilities for the Liquid Glass Renderer package.
@@ -73,7 +72,7 @@ abstract class LgrLogs {
   /// Logs a record using a print statement.
   static void _printLog(LogRecord record) {
     print(
-      '(${record.time.second}.${record.time.millisecond.toString().padLeft(3, '0')}) ${record.loggerName} > ${record.level.name}: ${record.message}',
+      '${record.loggerName} > ${record.level.name}: ${record.message}',
     );
   }
 }

@@ -1,6 +1,6 @@
 name: liquid_glass_renderer
 description: The raw renderer for a liquid glass effect in Flutter.
-version: 0.1.1-dev.26
+version: 0.2.0-dev.4
 
 homepage: https://whynotmake.it
 repository: https://github.com/whynotmake-it/flutter_liquid_glass/tree/main/packages/liquid_glass_renderer
@@ -44,9 +44,7 @@ dev_dependencies:
 
 flutter:
   shaders:
-    - lib/assets/shaders/liquid_glass.frag
     - lib/assets/shaders/liquid_glass_geometry_blended.frag
     - lib/assets/shaders/liquid_glass_filter.frag
     - lib/assets/shaders/liquid_glass_arbitrary.frag
     - lib/assets/shaders/liquid_glass_final_render.frag
-    - lib/assets/shaders/liquid_glass_lighting.frag

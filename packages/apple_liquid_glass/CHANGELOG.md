@@ -1,3 +1,19 @@
+## 0.2.0-dev.4
+
+ - Update a dependency to the latest release.
+
+## 0.2.0-dev.3
+
+ - Update a dependency to the latest release.
+
+## 0.2.0-dev.2
+
+ - Update a dependency to the latest release.
+
+## 0.2.0-dev.1
+
+ - Upgraded liquid_glass_renderer to 0.2.0-dev.1
+
 ## 0.1.0-dev.27
 
  - Update a dependency to the latest release.

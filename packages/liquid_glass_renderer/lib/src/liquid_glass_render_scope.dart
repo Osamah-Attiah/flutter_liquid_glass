@@ -1,37 +1,36 @@
 import 'package:flutter/widgets.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
-import 'package:liquid_glass_renderer/src/glass_link.dart';
 import 'package:meta/meta.dart';
 
 @internal
-class LiquidGlassScope extends InheritedWidget {
-  /// Creates a new [LiquidGlassScope].
-  const LiquidGlassScope({
+class LiquidGlassRenderScope extends InheritedWidget {
+  /// Creates a new [LiquidGlassRenderScope].
+  const LiquidGlassRenderScope({
     required this.settings,
     required super.child,
-    required this.link,
     this.useFake = false,
     super.key,
   });
 
   final LiquidGlassSettings settings;
 
-  final GlassLink link;
-
   final bool useFake;
 
-  static LiquidGlassScope of(BuildContext context) {
+  static LiquidGlassRenderScope of(BuildContext context) {
     final scope =
-        context.dependOnInheritedWidgetOfExactType<LiquidGlassScope>();
-    assert(scope != null, 'No LiquidGlassScope found in context');
+        context.dependOnInheritedWidgetOfExactType<LiquidGlassRenderScope>();
+    assert(
+      scope != null,
+      'No liquid glass renderer found in context. '
+      'Make sure to wrap your liquid glass widgets in a LiquidGlassLayer.',
+    );
     return scope!;
   }
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    return oldWidget is! LiquidGlassScope ||
+    return oldWidget is! LiquidGlassRenderScope ||
         oldWidget.settings != settings ||
-        oldWidget.link != link ||
         oldWidget.useFake != useFake;
   }
 }
